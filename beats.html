@@ -21,6 +21,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
     <style>
       body {
         font-family: "SF Pro Display", sans-serif;
@@ -76,7 +77,13 @@
       });
     </script>
   </head>
-  <body class="bg-black">
+  <body
+    style="
+      background-image: url('./assets/darkspace.png');
+      background-size: 100% auto;
+      background-repeat: repeat-y;
+    "
+  >
     <div>
       <nav id="navbar" class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
@@ -103,58 +110,173 @@
 
       <div class="container-fluid p-5 text-white" id="beats">
         <div class="row align-items-start justify-content-center">
-          <div class="col-8">
-            <div class="card bg-black border-2 border-dark text-white">
-              <div class="card-body">
-                <h4 class="card-title">RUN</h4>
-                <div class="card-subtitle">Lil Uzi Vert type beat</div>
-                <div class="track">
-                  <img
-                    id="playbtn"
-                    src="assets/playbutton.png"
-                    style="height: 50px; width: 50px"
-                  />
-                  <div id="waveform"></div>
-                </div>
-              </div>
-              <!-- <div class="music">
-                <p>Artist: Rohith</p>
-                <h1>Beat Name</h1>
-                <div class="track">
-                  <img id="playbtn" src="assets/playbutton.png" />
-                  <div id="waveform"></div>
-                </div>
-              </div> -->
-            </div>
-          </div>
+          <div id="beats" class="col-8"></div>
         </div>
       </div>
     </div>
     <script type="module">
       import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
-      var playbtn = document.getElementById("playbtn");
-      playbtn.addEventListener("click", function () {
-        wavesurfer.playPause();
-      });
-      const wavesurfer = WaveSurfer.create({
-        container: "#waveform",
-        waveColor: "#6E6E6E",
-        progressColor: "#4F4A85",
-        url: "assets/test.mp3",
-        barWidth: 3,
-        barRadius: 3,
-        responsive: true,
-        height: 70,
-      });
 
-      wavesurfer.on("interaction", () => {
-        wavesurfer.play();
-      });
-      wavesurfer.on("finish", () => {
-        wavesurfer.stop();
-      });
-    </script>
-    <script>
+      var currentlyPlaying = null;
+
+      function togglePlay(waveform, action = "toggle") {
+        if (currentlyPlaying && currentlyPlaying != waveform) {
+          togglePlay(currentlyPlaying);
+        }
+        var waveform_id = waveform.renderer.parent.id;
+        var waveform_element = document.getElementById(waveform_id);
+        var playbtnIcon =
+          waveform_element.parentNode.childNodes[0].childNodes[0];
+        var pausebtnIcon =
+          waveform_element.parentNode.childNodes[0].childNodes[1];
+        if (action == "play") {
+          waveform.play();
+        } else if (action == "pause") {
+          waveform.pause();
+        } else if (action == "stop") {
+          waveform.stop();
+        } else {
+          waveform.playPause();
+        }
+        if (waveform.isPlaying()) {
+          currentlyPlaying = waveform;
+          playbtnIcon.style.display = "none";
+          pausebtnIcon.style.display = "block";
+        } else {
+          currentlyPlaying = null;
+          playbtnIcon.style.display = "block";
+          pausebtnIcon.style.display = "none";
+        }
+      }
+
+      function createBeatElement(title, subtitle, path, color) {
+        var waveform = document.createElement("div");
+        waveform.id = title;
+
+        var playbtn = document.createElement("button");
+        playbtn.classList.add("btn");
+        playbtn.classList.add("btn-outline-dark");
+        playbtn.classList.add("btn-sm");
+        playbtn.classList.add("me-3");
+        playbtn.classList.add("border-0");
+        // playbtn.classList.add("text-white");
+        applyNeonStyle(playbtn, color);
+        var playbtnIcon = document.createElement("i");
+        playbtnIcon.classList.add("feather-32");
+        playbtnIcon.classList.add("p-1");
+        playbtnIcon.setAttribute("data-feather", "play");
+        var pausebtnIcon = document.createElement("i");
+        pausebtnIcon.classList.add("feather-32");
+        pausebtnIcon.classList.add("p-1");
+        pausebtnIcon.setAttribute("data-feather", "pause");
+        pausebtnIcon.style.display = "none";
+        playbtn.appendChild(playbtnIcon);
+        playbtn.appendChild(pausebtnIcon);
+
+        var track = document.createElement("div");
+        track.classList.add("track");
+        track.appendChild(playbtn);
+        track.appendChild(waveform);
+
+        var cardTitle = document.createElement("h4");
+        applyNeonStyle(cardTitle, color);
+        cardTitle.classList.add("card-title");
+        cardTitle.innerHTML = title;
+
+        var cardSubtitle = document.createElement("div");
+        applyNeonStyle(cardSubtitle, color);
+        cardSubtitle.classList.add("card-subtitle");
+        cardSubtitle.innerHTML = subtitle;
+
+        var cardBody = document.createElement("div");
+        cardBody.classList.add("card-body");
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardSubtitle);
+        cardBody.appendChild(track);
+
+        var card = document.createElement("div");
+        card.classList.add("card");
+        // card.style.background = color;
+        card.style.background = "rgba(0, 0, 0, 0.5)";
+        card.classList.add("border-0");
+        card.classList.add("border-radius-10");
+        card.classList.add("text-white");
+        card.classList.add("m-3");
+        card.appendChild(cardBody);
+
+        document.getElementById("beats").appendChild(card);
+
+        const wavesurfer = WaveSurfer.create({
+          container: "#" + title,
+          waveColor: "#757575",
+          progressColor: color,
+          url: path,
+          barWidth: 3,
+          barRadius: 3,
+          responsive: true,
+          height: 70,
+          cursorWidth: 0,
+        });
+        wavesurfer.on("interaction", () => {
+          togglePlay(wavesurfer, "play");
+        });
+        wavesurfer.on("finish", () => {
+          togglePlay(wavesurfer, "stop");
+        });
+
+        playbtn.addEventListener("click", function () {
+          togglePlay(wavesurfer);
+        });
+      }
+
+      function applyNeonStyle(element, color) {
+        element.style.color = color;
+        element.style.textShadow = `
+          0 0 10px ${color},
+          0 0 20px ${color},
+          0 0 40px ${color},
+          0 0 80px ${color},
+          0 0 160px ${color}
+        `;
+      }
+
+      const neonColors = [
+        "#08F7FE", // Neon blue
+        "#09FBD3", // Bright turquoise
+        "#F5D300", // Neon yellow
+        "#00FF9E", // Neon green
+        "#FF2079", // Neon red
+        "#F148FB", // Bright purple
+        "#7122FA", // Deep neon purple
+        "#5DFC0A", // Lime green
+        "#C1FF00", // Electric lime
+      ];
+
+      createBeatElement(
+        "BEAT",
+        "other beat",
+        "assets/beats/otherbeat.mp3",
+        neonColors[1]
+      );
+      createBeatElement(
+        "RUN",
+        "Lil Uzi Vert type beat",
+        "assets/beats/test.mp3",
+        neonColors[6]
+      );
+      createBeatElement(
+        "IMBOUTTA",
+        "Drake FATD Type Beat",
+        "assets/beats/IMBOUTTA.mp3",
+        neonColors[7]
+      );
+      createBeatElement(
+        "TRAP",
+        "Future Type Beat",
+        "assets/beats/futuretypebeat.mp3",
+        neonColors[5]
+      );
+
       $(document).ready(function () {
         feather.replace();
       });
