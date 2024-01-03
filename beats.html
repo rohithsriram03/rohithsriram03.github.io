@@ -79,7 +79,7 @@
   </head>
   <body
     style="
-      background-image: url('./assets/darkspace.png');
+      background-image: url('./assets/galaxy.png');
       background-size: 100% auto;
       background-repeat: repeat-y;
     "
@@ -196,8 +196,8 @@
 
         var card = document.createElement("div");
         card.classList.add("card");
-        // card.style.background = color;
-        card.style.background = "rgba(0, 0, 0, 0.5)";
+        card.style.background = color + "20";
+        // card.style.background = "rgba(0, 0, 0, 0.4)";
         card.classList.add("border-0");
         card.classList.add("border-radius-10");
         card.classList.add("text-white");
@@ -208,7 +208,7 @@
 
         const wavesurfer = WaveSurfer.create({
           container: "#" + title,
-          waveColor: "#757575",
+          waveColor: "#D7D7D7",
           progressColor: color,
           url: path,
           barWidth: 3,
@@ -240,41 +240,41 @@
         `;
       }
 
-      const neonColors = [
-        "#08F7FE", // Neon blue
-        "#09FBD3", // Bright turquoise
-        "#F5D300", // Neon yellow
-        "#00FF9E", // Neon green
-        "#FF2079", // Neon red
-        "#F148FB", // Bright purple
-        "#7122FA", // Deep neon purple
-        "#5DFC0A", // Lime green
-        "#C1FF00", // Electric lime
-      ];
+      const neonColorMap = {
+        blue: "#08F7FE",
+        turquoise: "#09FBD3",
+        yellow: "#F5D300",
+        green: "#00FF9E",
+        red: "#FF2079",
+        purple: "#F148FB",
+        deepPurple: "#7122FA",
+        limeGreen: "#5DFC0A",
+        electricLime: "#C1FF00",
+      };
 
       createBeatElement(
-        "BEAT",
-        "other beat",
+        "FROZEN",
+        "Nardo Wick Type Beat",
         "assets/beats/otherbeat.mp3",
-        neonColors[1]
+        neonColorMap["blue"]
       );
       createBeatElement(
-        "RUN",
-        "Lil Uzi Vert type beat",
-        "assets/beats/test.mp3",
-        neonColors[6]
+        "ROCKET",
+        "Future Type Beat",
+        "assets/beats/futuretypebeat.mp3",
+        neonColorMap["purple"]
       );
       createBeatElement(
         "IMBOUTTA",
         "Drake FATD Type Beat",
         "assets/beats/IMBOUTTA.mp3",
-        neonColors[7]
+        neonColorMap["green"]
       );
       createBeatElement(
-        "TRAP",
-        "Future Type Beat",
-        "assets/beats/futuretypebeat.mp3",
-        neonColors[5]
+        "RUN",
+        "Lil Uzi Vert Type beat",
+        "assets/beats/test.mp3",
+        neonColorMap["electricLime"]
       );
 
       $(document).ready(function () {
