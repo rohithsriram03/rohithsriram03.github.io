@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Rohith Sriram</title>
     <link rel="icon" type="image/x-icon" href="assets/memoji.png" />
     <link
@@ -63,6 +67,103 @@
       .track div {
         flex: 1;
       }
+
+      /* Mobile-specific styles */
+      @media screen and (max-width: 768px) {
+        html,
+        body {
+          background: #000 !important;
+          height: 100vh !important;
+          overflow-y: auto !important;
+          overflow-x: hidden !important;
+          color: #fff !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        .navbar {
+          background-color: rgba(0, 0, 0, 0.9) !important;
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar.is-scrolling {
+          background-color: rgba(0, 0, 0, 0.95) !important;
+          box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar-brand,
+        .nav-link {
+          color: #fff !important;
+          font-size: 1.1rem !important;
+        }
+
+        .navbar-brand {
+          font-size: 1.3rem !important;
+          font-weight: 500 !important;
+        }
+
+        #beats {
+          padding: 1rem 0 !important;
+          min-height: auto !important;
+          background: #000 !important;
+        }
+
+        .content-container {
+          width: 100%;
+          padding: 0 1rem;
+          margin: 0;
+          max-width: 100%;
+        }
+
+        /* Mobile optimizations for desktop cards */
+        .desktop-layout .row {
+          margin: 0 !important;
+        }
+
+        .desktop-layout .col-8 {
+          max-width: 100% !important;
+          flex: 0 0 100% !important;
+          padding: 0 !important;
+        }
+
+        .desktop-layout .card {
+          margin: 0.5rem 0 !important;
+          width: 100% !important;
+        }
+
+        /* Show desktop layout on mobile too - it looks great! */
+        .desktop-layout {
+          display: block !important;
+        }
+
+        /* Hide mobile layout */
+        .mobile-layout {
+          display: none !important;
+        }
+
+        /* Override any Bootstrap text colors */
+        .text-white {
+          color: #fff !important;
+        }
+      }
+
+      @media screen and (max-width: 576px) {
+        /* Desktop cards work great on small screens too! */
+      }
+
+      /* Desktop styles */
+      @media screen and (min-width: 769px) {
+        .mobile-layout {
+          display: none !important;
+        }
+
+        .desktop-layout {
+          display: block !important;
+        }
+      }
     </style>
     <script>
       // on window scroll, set isScrolling to true on navbar
@@ -109,8 +210,11 @@
       </nav>
 
       <div class="container-fluid p-5 text-white" id="beats">
-        <div class="row align-items-start justify-content-center">
-          <div id="beats" class="col-8"></div>
+        <!-- Desktop Layout -->
+        <div class="desktop-layout d-none d-md-block">
+          <div class="row align-items-start justify-content-center">
+            <div id="beats" class="col-8"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -125,10 +229,12 @@
         }
         var waveform_id = waveform.renderer.parent.id;
         var waveform_element = document.getElementById(waveform_id);
+
         var playbtnIcon =
           waveform_element.parentNode.childNodes[0].childNodes[0];
         var pausebtnIcon =
           waveform_element.parentNode.childNodes[0].childNodes[1];
+
         if (action == "play") {
           waveform.play();
         } else if (action == "pause") {
@@ -150,6 +256,11 @@
       }
 
       function createBeatElement(title, subtitle, path, color) {
+        // Create desktop version (works great on mobile too!)
+        createDesktopBeatElement(title, subtitle, path, color);
+      }
+
+      function createDesktopBeatElement(title, subtitle, path, color) {
         var waveform = document.createElement("div");
         waveform.id = title;
 
@@ -159,7 +270,6 @@
         playbtn.classList.add("btn-sm");
         playbtn.classList.add("me-3");
         playbtn.classList.add("border-0");
-        // playbtn.classList.add("text-white");
         applyNeonStyle(playbtn, color);
         var playbtnIcon = document.createElement("i");
         playbtnIcon.classList.add("feather-32");
@@ -197,7 +307,6 @@
         var card = document.createElement("div");
         card.classList.add("card");
         card.style.background = color + "20";
-        // card.style.background = "rgba(0, 0, 0, 0.4)";
         card.classList.add("border-0");
         card.classList.add("border-radius-10");
         card.classList.add("text-white");

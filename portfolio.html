@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Rohith Sriram</title>
     <link rel="icon" type="image/x-icon" href="assets/memoji.png" />
     <link
@@ -41,6 +45,394 @@
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
       }
+
+      .navbar-toggler {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 0.25rem 0.5rem;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+      }
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .portfolio-section {
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+        text-align: left;
+        color: #fff;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      }
+
+      .performance-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+
+      .performance-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .performance-title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+
+      .performance-subtitle {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+      }
+
+      .media-placeholder {
+        background: rgba(0, 0, 0, 0.3);
+        border: 2px dashed rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .media-placeholder:hover {
+        border-color: rgba(255, 255, 255, 0.5);
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .media-placeholder i {
+        font-size: 3rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 0.5rem;
+      }
+
+      .media-placeholder-text {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      /* YouTube embed styling */
+      .youtube-embed {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .youtube-embed:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      .youtube-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 12px;
+      }
+
+      .content-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      /* Mobile single-card layout */
+      @media (max-width: 768px) {
+        body {
+          overflow: hidden;
+        }
+
+        #portfolio {
+          padding: 0 !important;
+          height: 100vh;
+        }
+
+        .content-container {
+          padding: 0;
+          max-width: 100%;
+          height: 100vh;
+          position: relative;
+        }
+
+        .desktop-layout {
+          display: none !important;
+        }
+
+        .mobile-layout {
+          position: relative;
+          width: 100%;
+          height: 100vh;
+        }
+
+        /* Mobile header */
+        .mobile-header {
+          position: relative;
+          background: rgba(0, 0, 0, 0.9);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px);
+          padding: 0.5rem 1rem;
+          text-align: center;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          margin-bottom: 0;
+        }
+
+        .mobile-section-title {
+          font-size: 1.4rem;
+          font-weight: 500;
+          color: #fff;
+          margin: 0;
+        }
+
+        .mobile-counter {
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.7);
+          margin-top: 0.3rem;
+        }
+
+        /* Mobile portfolio items - single card layout */
+        .mobile-layout .portfolio-item {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.4s ease, visibility 0.4s ease;
+          padding: 0;
+          margin: 0;
+        }
+
+        .mobile-layout .portfolio-item.active {
+          opacity: 1;
+          visibility: visible;
+          z-index: 1;
+        }
+
+        .mobile-layout .performance-card {
+          margin: 0;
+          padding: 1rem 2rem 6rem 2rem;
+          border-radius: 0;
+          border: none;
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(25px);
+          -webkit-backdrop-filter: blur(25px);
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          text-align: center;
+          width: 100%;
+        }
+
+        .mobile-layout .performance-title {
+          font-size: 2.5rem;
+          font-weight: 400;
+          margin-bottom: 1rem;
+          line-height: 1.1;
+          color: #fff;
+        }
+
+        .mobile-layout .performance-subtitle {
+          font-size: 1.3rem;
+          margin-bottom: 2rem;
+          color: rgba(255, 255, 255, 0.8);
+          line-height: 1.3;
+          font-weight: 300;
+        }
+
+        .mobile-layout .media-placeholder {
+          height: 350px;
+          border-radius: 25px;
+          margin-bottom: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          max-width: 450px;
+          border: 4px dashed rgba(255, 255, 255, 0.5);
+          background: rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-layout .youtube-embed {
+          height: 280px;
+          border-radius: 20px;
+          margin-bottom: 2rem;
+          width: 100%;
+          max-width: 400px;
+          margin: 0 auto 2rem auto;
+        }
+
+        .mobile-layout .media-placeholder i {
+          font-size: 6rem;
+          margin-bottom: 1.5rem;
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        .mobile-layout .media-placeholder-text {
+          font-size: 1.5rem;
+          line-height: 1.4;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.9);
+        }
+
+        .mobile-layout .media-placeholder-text small {
+          font-size: 1.2rem;
+          opacity: 0.8;
+          display: block;
+          margin-top: 0.8rem;
+          font-weight: 300;
+        }
+
+        /* Mobile navigation - positioned left and right */
+        .mobile-nav {
+          position: fixed;
+          bottom: 2rem;
+          left: 1rem;
+          right: 1rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 30;
+          padding: 0;
+          width: calc(100% - 2rem);
+          gap: 1rem;
+        }
+
+        .nav-btn {
+          background: #333;
+          border: 2px solid #555;
+          border-radius: 50px;
+          padding: 1rem 1.5rem;
+          color: #fff;
+          font-size: 1.1rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          min-width: 100px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+          flex-shrink: 0;
+        }
+
+        .nav-btn:hover {
+          background: #444;
+          border-color: #666;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-btn:disabled {
+          opacity: 0.4;
+          cursor: not-allowed;
+          background: #222;
+          border-color: #333;
+        }
+
+        .nav-btn:disabled:hover {
+          background: #222;
+          border-color: #333;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      @media (max-width: 576px) {
+        .mobile-section-title {
+          font-size: 1.6rem;
+        }
+
+        .performance-card {
+          padding: 5rem 1.5rem 7rem 1.5rem;
+        }
+
+        .performance-title {
+          font-size: 2.6rem;
+        }
+
+        .performance-subtitle {
+          font-size: 1.4rem;
+          margin-bottom: 2.5rem;
+        }
+
+        .media-placeholder {
+          height: 280px;
+          max-width: 380px;
+        }
+
+        .mobile-layout .youtube-embed {
+          height: 280px;
+          max-width: 380px;
+        }
+
+        .media-placeholder i {
+          font-size: 4.5rem;
+        }
+
+        .media-placeholder-text {
+          font-size: 1.3rem;
+        }
+
+        .media-placeholder-text small {
+          font-size: 1.1rem;
+        }
+
+        .nav-btn {
+          padding: 0.6rem 1rem;
+          font-size: 1rem;
+          min-width: 80px;
+        }
+
+        .mobile-nav {
+          bottom: 1.5rem;
+          left: 0.8rem;
+          right: 0.8rem;
+        }
+      }
+
+      /* Smooth scrolling for mobile slideshow effect */
+      @media (max-width: 768px) {
+        html {
+          scroll-behavior: smooth;
+        }
+
+        .performance-card {
+          scroll-snap-align: start;
+        }
+
+        .portfolio-section {
+          scroll-snap-type: y mandatory;
+        }
+      }
     </style>
     <script>
       // on window scroll, set isScrolling to true on navbar
@@ -56,7 +448,7 @@
     </script>
   </head>
   <body class="bg-black">
-    <div id="content-wrapper d-none">
+    <div id="content-wrapper">
       <nav id="navbar" class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
           <a class="navbar-brand ms-4 text-light" href="index.html"
@@ -82,21 +474,367 @@
           </div>
         </div>
       </nav>
-      <!-- Work In Progress -->
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 text-center">
-            <h1 class="text-light mt-5">Work In Progress</h1>
-            <p class="text-light">
-              This page is still under construction. Please check back later.
-            </p>
+      <!-- Mobile Header (only visible on mobile) -->
+      <div class="mobile-header d-block d-md-none">
+        <h2 class="mobile-section-title" id="mobileSectionTitle">
+          Composition
+        </h2>
+        <div class="mobile-counter" id="mobileCounter">1 of 5</div>
+      </div>
+
+      <!-- Mobile Navigation (only visible on mobile) -->
+      <div class="mobile-nav d-block d-md-none">
+        <button class="nav-btn" id="prevBtn" onclick="previousCard()">
+          Previous
+        </button>
+        <button class="nav-btn" id="nextBtn" onclick="nextCard()">Next</button>
+      </div>
+
+      <!-- Portfolio Content -->
+      <div class="container-fluid p-5 text-white" id="portfolio">
+        <div class="content-container">
+          <!-- Desktop Layout -->
+          <div class="desktop-layout d-none d-md-block">
+            <!-- Composition Section -->
+            <div class="portfolio-section">
+              <h2 class="section-title">Composition</h2>
+              <div class="row">
+                <div class="col-lg-6 col-12 mb-4">
+                  <div class="performance-card">
+                    <h3 class="performance-title">Dream</h3>
+                    <p class="performance-subtitle">
+                      Original Composition - Video Performance
+                    </p>
+                    <div class="youtube-embed">
+                      <iframe
+                        src="https://www.youtube.com/embed/mYZfd-ZX08U?enablejsapi=1&origin=https://rohithsriram03.github.io"
+                        title="Dream - Original Composition"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-12 mb-4">
+                  <div class="performance-card">
+                    <h3 class="performance-title">Berklee College of Music</h3>
+                    <p class="performance-subtitle">
+                      Composition Submission - Video Recording
+                    </p>
+                    <div class="youtube-embed">
+                      <iframe
+                        src="https://www.youtube.com/embed/uVEz37_kQtc?enablejsapi=1&origin=https://rohithsriram03.github.io"
+                        title="Berklee College of Music - Composition Submission"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-12 mb-4">
+                  <div class="performance-card">
+                    <h3 class="performance-title">
+                      Rice University - Jailbreak
+                    </h3>
+                    <p class="performance-subtitle">
+                      Composition Performance - Video Recording
+                    </p>
+                    <div class="youtube-embed">
+                      <iframe
+                        src="https://www.youtube.com/embed/QXG9DXNxYSQ?enablejsapi=1&origin=https://rohithsriram03.github.io"
+                        title="Rice University - Jailbreak"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Classical Violin Section -->
+            <div class="portfolio-section">
+              <h2 class="section-title">Classical Violin</h2>
+              <div class="row">
+                <!-- <div class="col-lg-6 col-12 mb-4">
+                  <div class="performance-card">
+                    <h3 class="performance-title">Classical Era</h3>
+                    <p class="performance-subtitle">
+                      Classical Period Performance - Video Recording
+                    </p>
+                    <div class="media-placeholder">
+                      <div class="text-center">
+                        <i data-feather="play-circle"></i>
+                        <div class="media-placeholder-text">
+                          Video Placeholder<br /><small>Coming soon!</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                <div class="col-lg-6 col-12 mb-4">
+                  <div class="performance-card">
+                    <h3 class="performance-title">Romantic Era</h3>
+                    <p class="performance-subtitle">
+                      Romantic Period Performance - Video Recording
+                    </p>
+                    <div class="youtube-embed">
+                      <iframe
+                        src="https://www.youtube.com/embed/E7h2fmkzpBo?enablejsapi=1&origin=https://rohithsriram03.github.io"
+                        title="Romantic Era - Classical Violin Performance"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        referrerpolicy="strict-origin-when-cross-origin"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Layout - Flat list of portfolio items -->
+          <div class="mobile-layout d-block d-md-none">
+            <div class="portfolio-item active" data-section="Composition">
+              <div class="performance-card">
+                <h3 class="performance-title">Dream</h3>
+                <p class="performance-subtitle">
+                  Original Composition - Video Performance
+                </p>
+                <div class="youtube-embed">
+                  <iframe
+                    src="https://www.youtube.com/embed/mYZfd-ZX08U"
+                    title="Dream - Original Composition"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="portfolio-item" data-section="Composition">
+              <div class="performance-card">
+                <h3 class="performance-title">Berklee College of Music</h3>
+                <p class="performance-subtitle">
+                  Composition Submission - Video Recording
+                </p>
+                <div class="youtube-embed">
+                  <iframe
+                    src="https://www.youtube.com/embed/uVEz37_kQtc"
+                    title="Berklee College of Music - Composition Submission"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="portfolio-item" data-section="Composition">
+              <div class="performance-card">
+                <h3 class="performance-title">Rice University - Jailbreak</h3>
+                <p class="performance-subtitle">
+                  Composition Performance - Video Recording
+                </p>
+                <div class="youtube-embed">
+                  <iframe
+                    src="https://www.youtube.com/embed/QXG9DXNxYSQ?enablejsapi=1&origin=https://rohithsriram03.github.io"
+                    title="Rice University - Jailbreak"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="portfolio-item" data-section="Classical Violin">
+              <div class="performance-card">
+                <h3 class="performance-title">Classical Era</h3>
+                <p class="performance-subtitle">
+                  Classical Period Performance - Video Recording
+                </p>
+                <div class="media-placeholder">
+                  <div class="text-center">
+                    <i data-feather="play-circle"></i>
+                    <div class="media-placeholder-text">
+                      Video Placeholder<br /><small
+                        >Click to replace with YouTube/Drive link</small
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="portfolio-item" data-section="Classical Violin">
+              <div class="performance-card">
+                <h3 class="performance-title">Romantic Era</h3>
+                <p class="performance-subtitle">
+                  Romantic Period Performance - Video Recording
+                </p>
+                <div class="youtube-embed">
+                  <iframe
+                    src="https://www.youtube.com/embed/E7h2fmkzpBo"
+                    title="Romantic Era - Classical Violin Performance"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <script>
+      // Mobile portfolio navigation
+      let currentIndex = 0;
+      let portfolioItems = [];
+      let isMobile = false;
+
+      function initMobilePortfolio() {
+        // Only get mobile layout portfolio items
+        portfolioItems = document.querySelectorAll(
+          ".mobile-layout .portfolio-item"
+        );
+        isMobile = window.innerWidth <= 768;
+
+        if (isMobile && portfolioItems.length > 0) {
+          // Remove any existing active classes
+          portfolioItems.forEach((item) => item.classList.remove("active"));
+
+          // Set first item as active
+          currentIndex = 0;
+          portfolioItems[0].classList.add("active");
+
+          updateMobileView();
+          updateNavButtons();
+
+          console.log(
+            "Mobile portfolio initialized with",
+            portfolioItems.length,
+            "items"
+          );
+        }
+      }
+
+      function updateMobileView() {
+        if (!isMobile || portfolioItems.length === 0) return;
+
+        // Hide all items
+        portfolioItems.forEach((item, index) => {
+          item.classList.remove("active");
+          if (index === currentIndex) {
+            item.classList.add("active");
+          }
+        });
+
+        // Update header
+        const currentItem = portfolioItems[currentIndex];
+        const section = currentItem.getAttribute("data-section");
+        const titleElement = document.getElementById("mobileSectionTitle");
+        const counterElement = document.getElementById("mobileCounter");
+
+        if (titleElement) titleElement.textContent = section;
+        if (counterElement)
+          counterElement.textContent = `${currentIndex + 1} of ${
+            portfolioItems.length
+          }`;
+      }
+
+      function updateNavButtons() {
+        if (!isMobile) return;
+
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        if (prevBtn) prevBtn.disabled = currentIndex === 0;
+        if (nextBtn)
+          nextBtn.disabled = currentIndex === portfolioItems.length - 1;
+      }
+
+      function nextCard() {
+        if (!isMobile) return;
+
+        if (currentIndex < portfolioItems.length - 1) {
+          currentIndex++;
+          updateMobileView();
+          updateNavButtons();
+        }
+      }
+
+      function previousCard() {
+        if (!isMobile) return;
+
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateMobileView();
+          updateNavButtons();
+        }
+      }
+
+      // Touch/swipe support for mobile
+      let startX = 0;
+      let endX = 0;
+
+      function handleTouchStart(e) {
+        if (!isMobile) return;
+        startX = e.touches[0].clientX;
+      }
+
+      function handleTouchEnd(e) {
+        if (!isMobile) return;
+        endX = e.changedTouches[0].clientX;
+        handleSwipe();
+      }
+
+      function handleSwipe() {
+        const threshold = 50;
+        const diff = startX - endX;
+
+        if (Math.abs(diff) > threshold) {
+          if (diff > 0) {
+            // Swipe left - next card
+            nextCard();
+          } else {
+            // Swipe right - previous card
+            previousCard();
+          }
+        }
+      }
+
       $(document).ready(function () {
         feather.replace();
+
+        // Initialize mobile portfolio
+        setTimeout(function () {
+          initMobilePortfolio();
+        }, 100);
+
+        // Add touch event listeners
+        document.addEventListener("touchstart", handleTouchStart, false);
+        document.addEventListener("touchend", handleTouchEnd, false);
+
+        // Reinitialize on window resize
+        window.addEventListener("resize", function () {
+          setTimeout(function () {
+            initMobilePortfolio();
+          }, 100);
+        });
       });
     </script>
   </body>
